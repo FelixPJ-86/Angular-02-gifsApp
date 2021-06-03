@@ -7,8 +7,11 @@ import { Injectable } from '@angular/core';
 export class GifsService {
 
 
-  private _apiKay:string='8gzDKG4TWxdm0W1ONtBcMQrpVvE4qQc1';
+  private apiKey:string='8gzDKG4TWxdm0W1ONtBcMQrpVvE4qQc1';
  private _historial:string[]=[];
+
+// TODO:cambiar any por su tipo
+public resultados:any[]=[];
 
 get historial(){
   
@@ -27,10 +30,10 @@ if(!this._historial.includes(query)){
 }
 
 
-this.http.get('https://api.giphy.com/v1/gifs/search?api_key=8gzDKG4TWxdm0W1ONtBcMQrpVvE4qQc1&q=cabeza&limit=10')
+this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.apiKey}&q=${query}&limit=10`)
 .subscribe((resp:any)=>{
 console.log(resp.data);
-
+this.resultados=resp.data;
 } )
 
 }
