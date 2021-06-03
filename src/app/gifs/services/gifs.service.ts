@@ -43,7 +43,6 @@ const params=new HttpParams().set('api_key',this.apiKey)
 
 this.http.get<SearchGIFResponse>(`${this.servicioUrl}/search`,{params})
 .subscribe((resp:SearchGIFResponse)=>{
-console.log(resp.data);
 this.resultados=resp.data;
 localStorage.setItem('resultados',JSON.stringify(this.resultados));
 
